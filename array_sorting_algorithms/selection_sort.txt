@@ -1,0 +1,18 @@
+##############
+SELECTION SORT
+##############
+
+Selection sort is an in-place comparison sorting algorithm that iterates through the list to ensure every element at index i is the smallest/largest element of the list. 
+
+See codepen for example.
+
+BIG O ANALYSIS
+It has an O(n^2) time complexity, which makes it inefficient on large lists.
+
+The if statement if(smallestElem > arr[j]) has straightforward constant time complexity of O(1).
+
+Count how many times the statement is executed:
+- the outer loop runs n times with n being the length of the array
+- the inner loop runs n-1 times
+- thus we get n(n-1) or n^2 - n
+- ignore non-dominant factor, result: O(n^2) or time complexity of O-squared

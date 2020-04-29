@@ -1,0 +1,17 @@
+###########
+LINKED LIST
+###########
+
+A linked list is an ordered collection of data but the nodes are NOT stored in a sequential order, they can be found at unrelated memory allocations.
+
+A list of data points is linked together with pointers. Each data point or NODE has a POINTER that points to the next value or node in the list.
+
+The very first node is the HEAD, the TAIL or last node has a pointer value of NULL.
+
+Thus each NODE consists of the actual DATA plus a REFERENCE or pointer.
+
+#########################
+LINKED LIST IN JAVASCRIPT
+#########################
+
+You can create a class with methods to traverse the node list.

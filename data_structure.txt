@@ -1,0 +1,22 @@
+##############
+DATASTRUCTURES
+##############
+
+LISTS, SETS AND BAGS
+
+Lists have a defined order and can allow duplicate values.
+A set is unordered and does NOT allow duplicates. Values in a set have an index position and when adding a duplicate value, the original one gets overwritten.
+A bag is an unordered collection of values that DOES allow for duplicates.
+
+SQL, for example, is based on the bag algebra. Thus if you want a database to provide order or to remove duplicates that datasbase has to perform calculation as that 'bag' does not have order by default and allows duplicates.
+
+
+LINEAR DATASTRUCTURES:
+- lists
+- hash tables
+- stack
+- queue
+
+HIEARCHICAL DATASTRUCTURES
+- trees
+- heap

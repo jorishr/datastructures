@@ -1,0 +1,29 @@
+#####
+HEAPS
+#####
+
+In a min heap all parent nodes are smaller than their child nodes. The root node is always the smallest number.
+
+In a max heap all parent nodes are bigger than their child nodes. The root node is always the biggest number.
+
+INSERTION (min heap)
+The order: top to bottom, left to right. If the insert point is not the correct one you can bubble sort up the heap by comparing to the parent node.
+
+IMPLEMENTATION
+There are no gaps in a heap. Thus we can map it to an index based array.
+
+The heap positions are as follows:
+				0
+		1				2
+	3		4		5		6
+7		8
+
+Thus [0,1,2,3,4,5,6,...]
+
+The parentNode index position of any other index position can be found: 
+
+parentIndex = index - 2 / 2
+
+The left child index position can be found: (parentIndex * 2) + 1 
+The right child index position can be found:(parentIndex * 2) + 2
+
