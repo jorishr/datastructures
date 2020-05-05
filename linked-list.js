@@ -154,7 +154,7 @@ class LinkedList {
         this.size--;
         console.log(`Value at index: ${index} removed from the list`);
     }
-    //VI:   Remove last node
+    //VI. Remove last node: set the pointer at second to last node to null
     removeLast(){
         let currentNode = this.head;
         let previous;
@@ -203,6 +203,25 @@ class LinkedList {
         console.log(`The ${val}nth value from the end of the list is ${result}`);
         return result; 
     }
+    //IX. Reverse the linked-list: reverse the pointers
+    reverseList(){
+        //iterative approach: loop through the nodes, store next and previous
+        //adjust pointers, loop ends at last node, set to this.head and ajust pointer
+        let currentNode = this.head;
+        let next;
+        let previous = null;
+        while(currentNode.next){
+            next        = currentNode.next;
+            currentNode.next = previous;
+            previous    = currentNode;
+            currentNode = next;
+        }
+        this.head = currentNode;
+        this.head.next = previous;
+        console.log('---List reversal completed---')
+        this.printListValues();
+        return this;
+    }
 }
   
 const newList = new LinkedList();
@@ -226,6 +245,8 @@ newList.getAt(0);
 newList.getAt(6);
 newList.getAt(-1);
 */
+newList.reverseList();
+
 newList.removeAt(3);
 newList.printListValues();
 
