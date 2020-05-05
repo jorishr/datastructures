@@ -206,7 +206,7 @@ class LinkedList {
     //IX. Reverse the linked-list: reverse the pointers
     reverseList(){
         //iterative approach: loop through the nodes, store next and previous
-        //adjust pointers, loop ends at last node, set to this.head and ajust pointer
+        //adjust pointers, loop ends at last node, set to this.head and adjust pointer
         let currentNode = this.head;
         let next;
         let previous = null;
@@ -220,6 +220,18 @@ class LinkedList {
         this.head.next = previous;
         console.log('---List reversal completed---')
         this.printListValues();
+        return this;
+    }
+    reverseRecursively(current = this.head, previous = null){
+        if(current.next){
+            let next         = current.next;
+            current.next     = previous;
+            let passPrevious = current;
+            this.reverseRecursively(next, passPrevious);
+        } else {
+            this.head = current;
+            this.head.next = previous;
+        }
         return this;
     }
 }
@@ -246,6 +258,9 @@ newList.getAt(6);
 newList.getAt(-1);
 */
 newList.reverseList();
+
+newList.reverseRecursively();
+newList.printListValues();
 
 newList.removeAt(3);
 newList.printListValues();
