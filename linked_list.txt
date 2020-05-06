@@ -2,16 +2,38 @@
 LINKED LIST
 ###########
 
-A linked list is an ordered collection of data but the nodes are NOT stored in a sequential order, they can be found at unrelated memory allocations.
+A linked list is an ordered collection of data but the nodes are NOT stored in a sequential order as in array, they can be found at unrelated memory allocations.
 
-A list of data points is linked together with pointers. Each data point or NODE has a POINTER that points to the next value or node in the list.
+The list of data points is linked together with pointers. Each data point or NODE has a POINTER that points to the next value or node in the list.
 
 The very first node is the HEAD, the TAIL or last node has a pointer value of NULL.
 
 Thus each NODE consists of the actual DATA plus a REFERENCE or pointer.
 
-#########################
-LINKED LIST IN JAVASCRIPT
-#########################
+LINKED LIST VS ARRAY
 
-You can create a class with methods to traverse the node list.
+- Access/read elements is faster for an array as the indexed elements are stored in one sequential memory block. If index[0] is stored at memory allocation block 200, then we know immediately where all other indexed elements can be found. 
+
+Since the operation of accesing elements takes constant time or O(1) for an array, an array is good choice for storing data that will be read often.
+
+A linked-list on the other hand has a time complexity of O(n) in the worst of cases. The memory location for the head is know but since the elements can be stored at random memory locations you'll have to traverse the list through the pointers to find the value you want. If that value is stored at the end of the list you'll have traverse all nodes (n).
+
+- Memory requirements. An array has a fixed size that can be extended (doubled) as needed. This means that as long as the array is not at full capacity, some of the allocated memory is unused. Plus, if you want to double the array size you need a solid sequential block of memory to be available. 
+
+For a linked-list each node is stored seperately, so there is no unused memory space. However, storing the pointers alongside each element means you use more (double) memory for each element (example: 4 byte integer + 4 byte pointer).
+
+- Cost of insertion/deletion in three scenarios: at the beginning, the end, and at index.
+
+For the array, the insertion at the beginning is costly because you have to shift all other elements to the next index. Thus, the average time complexity is O(n).
+
+For the linked-list this is an fast operation because you only need to create a node and point it to the previous head of the list. Time complexity is O(1), or constant.
+
+For inserting an element at the end of the datastructure, the time complexity is reversed: adding an additional value to the array takes constant time O(1), while a linked-list requires you to traverse the entire list to find the last node and adjust its pointer. Thus for a linked-list appending has a time-complexity of O(n).
+
+One exception: if the array's memory location is full, a new and bigger size array needs to be created with a copy of the original one. In this case the time-complexity is also O(n).
+
+For inserting an element at nth position both array and linked-list have a time-complexity of O(n) at worst because you have to shift the remaining elements (array) or traverse the list to adjust pointers.
+
+DOUBLY LINKED LIST
+
+The advantage is that reverse traversal becomes much easier. The cost is that you have additional memory requirements to store an additional pointer for each node.
