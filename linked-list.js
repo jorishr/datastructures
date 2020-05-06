@@ -218,6 +218,7 @@ class LinkedList {
     }
     printListInReverse(){
         //loop over nodes and unshitf to arr, loop over arr and print to console
+        //the arr functions as a stack
         let current = this.head;
         let listArr = []; 
         while(current.next){
@@ -260,6 +261,25 @@ class LinkedList {
         }
         return this;
     }
+    reverseWithStack(){
+        let current = this.head;
+        let stack   = [];
+        while(current.next){
+            stack.push(current);
+            current = current.next;
+        }
+        stack.push(current);
+        //set new head
+        this.head = stack.pop();
+        current   = stack.pop();
+        this.head.next = current;
+        //set remaining node pointers
+        while(stack.length > 0){
+            current.next = stack.pop();
+            current = current.next;
+        }
+        current.next = null;    //last node
+    }
 }
   
 const newList = new LinkedList();
@@ -293,6 +313,11 @@ newList.printListInReverse();
 console.log('------------')
 
 newList.removeAt(3);
+newList.printListValues();
+
+console.log('\n\n')
+newList.printListValues();
+newList.reverseWithStack();
 newList.printListValues();
 
 newList.removeLast();
