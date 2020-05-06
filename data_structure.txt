@@ -28,13 +28,16 @@ These requirements can be implemented through and array:
 The efficiency of these operations is O(1) at best and O(n) at worst. The best scenario is when you add/remove the last elements and leave other elements untouched. Worst scenario is adding/removing at the beginning which results in shifting all other array elements.
 
 If the array is full and you want to add another element the cost of copying is O(n) as well.
+
 - read: since there is an index order the efficiency is O(1) 
 
-The cost in time for many operations in an array is O(n) which is not efficient for a dynamic list. Also, an array is stored as one continuous data block in memory. A better solutions would be to use a LINKED LIST data structure as it can easily insert or remove nodes from the list without reorganization of the entire data structure.
+The cost in time for most other operations in an array is O(n) which is not efficient for a dynamic list. Also, an array is stored as one continuous data block in memory. 
+
+An alternative solution better solution would be to use a LINKED LIST data structure as it can, in some cases, more efficiently insert or remove nodes from the list without reorganization of the entire data structure.
 
 Drawbacks of linked-lists: 
-- random access of data elements is not allowed. Nodes must be accessed sequentially starting from the first one. Therefore, search operation is slow on a linked list.
-- it uses more memory than arrays because of the storage used by their pointers.
+- random access of data elements is not allowed. Nodes must be accessed sequentially starting from the first one. Therefore, search operation is slow on a linked list O(n).
+- it uses more memory than arrays because of the storage used by the pointers stored for each node.
 
 
 LISTS, SETS AND BAGS
