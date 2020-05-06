@@ -185,6 +185,19 @@ class LinkedList {
             console.log('---Done printing list values---');
         }
     }
+    printListValuesRecursively(val = this.head){
+        if(this.size === 0){
+            console.log('The list is empty.');
+        } else {
+            let current = val;
+            console.log(current.data);
+            if(current.next){
+                current = current.next;
+                this.printListValuesRecursively(current);
+            } else return this;
+        }
+
+    }
     //VIII: Print nth node from the end
     printNthFromEnd(val){
         let result;
@@ -202,6 +215,19 @@ class LinkedList {
         result = nodesArr[nodesArr.length - val]; 
         console.log(`The ${val}nth value from the end of the list is ${result}`);
         return result; 
+    }
+    printListInReverse(){
+        //loop over nodes and unshitf to arr, loop over arr and print to console
+        let current = this.head;
+        let listArr = []; 
+        while(current.next){
+            listArr.unshift(current.data);
+            current = current.next;
+        }
+        listArr.unshift(current.data);
+        console.log('---Start printing list values in reverse---');
+        listArr.forEach(val => console.log(val));
+        console.log('---Done printing list values in reverse---');
     }
     //IX. Reverse the linked-list: reverse the pointers
     reverseList(){
@@ -258,9 +284,13 @@ newList.getAt(6);
 newList.getAt(-1);
 */
 newList.reverseList();
-
 newList.reverseRecursively();
 newList.printListValues();
+
+//newList.printListValuesRecursively();
+console.log('------------')
+newList.printListInReverse();
+console.log('------------')
 
 newList.removeAt(3);
 newList.printListValues();
