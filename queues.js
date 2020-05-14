@@ -232,3 +232,129 @@ console.log(myRQueue.isFull());
 
 myRQueue.enqueue('fn6');
 console.log(myRQueue);
+
+/**
+ * C. QUEUE IMPLEMENTATION WITH A LINKED LIST
+ * The disadvantage of the array implementation is that allocated memory for
+ * a fixed size array may remain unused. Also, once an array is full you either
+ * deny new entries or have to copy the existing array into a new array which
+ * has a time cost of O(n).
+ * 
+ * If we adhere to the strict time complexity requirements for a queue we have 
+ * to modify the classical linked list by also storing the tail of list in 
+ * addition to the head. By doing so we can avoid the linked list traversal to
+ * find the last node, an operation that takes O(n). We want O(1).
+ */
+class Node {
+  constructor (val, pointer = null){
+    this.val     = val
+    this.pointer = pointer;
+  }
+}
+class llQueue {
+  constructor(){
+    this.head = null;
+    this.tail = null;
+  }
+  isEmpty(){
+    if(!this.head){
+      return true;
+    } else return false;
+  }
+  getHeadVal(){
+    if(this.head){
+      return this.head.val;
+    } else return this;
+  }
+/*   getTail(){
+    if(!this.head){
+      return this;
+    } else {
+      let current = this.head;
+      while(current.pointer){      
+        current = current.pointer;
+      }
+      return current;
+    }
+  } */
+  getTail(){
+    if(!this.head){
+      return this;
+    } else {
+      return this.tail;
+    }
+  }
+/*   enqueue(val){
+    if(!this.head){
+      this.head = new Node(val);
+    } else {
+      let tail     = this.getTail();
+      const node   = new Node(val);
+      tail.pointer = node;
+    }
+  } */
+  enqueue(val){
+    const node = new Node(val);
+    if(!this.head){
+      this.head = node
+      this.tail = node;
+    } else if(this.head === this.tail){
+      this.head.pointer = node;
+      this.tail = node;
+    } else {
+      this.tail.pointer = node;
+      this.tail = node;
+    }
+  }
+  dequeue(val){
+    if(this.head){
+      let el = this.head;
+      if(!this.head.pointer){
+        this.head = null;
+        this.tail = null;
+      } else {
+        this.head = this.head.pointer;
+      }
+      console.log(`Element: ${el.val}, removed from the queue`);
+    } else {
+      console.log('The queue is empty');
+      return this;
+    }
+  }
+  print(){
+    if(!this.head){
+      console.log('The queue is empty');
+      return this
+    } else {
+      console.log('***START PRINTING QUEUE***');
+      let current = this.head;
+      while(current.pointer){
+        console.log(current.val);
+        current = current.pointer;
+      }
+      console.log(current.val);
+      console.log('***DONE PRINTING QUEUE***');
+      return this;
+    }
+  }
+}
+
+console.log('\n\n');
+const myLlQueue = new llQueue();
+//console.log(myLlQueue.isEmpty());
+myLlQueue.enqueue('a');
+myLlQueue.enqueue('b');
+myLlQueue.enqueue('c');
+//myLlQueue.enqueue('d');
+console.log(myLlQueue.getHeadVal());
+console.log(myLlQueue.getTail());
+myLlQueue.print();
+console.log(myLlQueue);
+myLlQueue.dequeue();
+myLlQueue.print();
+
+myLlQueue.dequeue();
+myLlQueue.print();
+
+myLlQueue.dequeue();
+myLlQueue.print();
