@@ -114,8 +114,6 @@ class Queue {
    * 
    * To implement a circular array the next index is not i + 1 but (i + 1) % n
    * while the previous index is not i - 1 but (i + n - 1) % n 
-   * 
-   * To create a fixed length array use Object.seal(arr)
    */
 class rQueue {
   constructor(limit){
@@ -138,17 +136,17 @@ class rQueue {
     } else return false;
   }
   getHead(){
-    if(this.isEmpty){
+    if(this.isEmpty()){
       return console.log('No head found. Queue is empty');
     } else {
-      return arr[this.head];
+      return this.arr[this.head];
     }
   }
   getTail(){
-    if(this.isEmpty){
+    if(this.isEmpty()){
       return console.log('No tail found. Queue is empty');
     } else {
-      return arr[this.tai];
+      return this.arr[this.tail];
     }
   }
   enqueue(val){
@@ -198,7 +196,6 @@ class rQueue {
       console.log(`Number of elements of the queue: ${size}`);
       return size;
     }
-    
   }
   print(){
     if(!this.head){
@@ -228,6 +225,9 @@ myRQueue.enqueue('fn4');
 myRQueue.enqueue('fn5');
 myRQueue.print();
 myRQueue.getSize();
+
+console.log(myRQueue.getHead());
+console.log(myRQueue.getTail());
 console.log(myRQueue.isFull());
 
 myRQueue.enqueue('fn6');
