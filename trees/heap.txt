@@ -2,6 +2,8 @@
 HEAPS
 #####
 
+A heap is a special type of tree.
+
 In a min heap all parent nodes are smaller than their child nodes. The root node is always the smallest number.
 
 In a max heap all parent nodes are bigger than their child nodes. The root node is always the biggest number.

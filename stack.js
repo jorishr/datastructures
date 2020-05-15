@@ -1,8 +1,14 @@
 /*
-####################
-STACK (Array method)
-####################
-- a stack is last-in-first-out and works nicely with the .push and .pop methods for array.
+###################################
+STACK IMPLEMENTATIONS IN JAVASCRIPT
+I.  ARRAY METHOD
+II. LINKED LIST METHOD
+###################################
+
+#######################
+I.  STACK: Array method
+#######################
+A stack is last-in-first-out and works nicely with the .push and .pop methods for array.
 */
 class Stack {
     constructor(limit = 5){
@@ -65,9 +71,9 @@ myStack.clear();
 myStack.show(); 
 
 /*
-##########################
-STACK (Linked List method)
-##########################
+#############################
+II. STACK: Linked List method
+#############################
 There are two options: 
 - add/remove at the beginning of the list, time complexity of O(1)
 - add/remove at the end of the list, time complexity of O(n)
