@@ -68,8 +68,8 @@ console.log(myTree);
 myTree.printInOrder();
 myTree.printPreOrder();
 myTree.printPostOrder();
-myTree.isPresent(3);
-myTree.isPresent(10);
+console.log(myTree.isPresent(3));
+console.log(myTree.isPresent(10));
 myTree.findMin();
 myTree.findMax();
 
@@ -150,6 +150,11 @@ myBst.printInOrder();
 myBst.remove(5);
 myBst.printInOrder();
 myBst.printLevelOrder();
+console.log(myBst.isPresent(1));
+console.log(myBst.isPresent(12));
+console.log(myBst.isPresent(9));
+console.log(myBst.isPresent(5));
+console.log(myBst.isPresent(50));
 
 //Tree height and balance
 console.log(`This tree has a min height of ${myBst.findMinHeight()}`);
@@ -172,3 +177,7 @@ testTree.isBalanced();
 const balancedTestTree = testTree.balanceTree();
 balancedTestTree.isBalanced();
 balancedTestTree.printLevelOrder();
+
+console.log(testTree.isPresent(1))
+console.log(testTree.isPresent(3))
+console.log(testTree.isPresent(4))

@@ -1,5 +1,5 @@
 //isPresent
-function isPresent(data){
+/* function isPresent(data){
     if(this.root === null){
         console.log('This tree is empty.');
         return null;
@@ -23,6 +23,21 @@ function isPresent(data){
         }
     }
 }
+ */
+function isPresent(searchVal, current = this.root){
+    //empty tree
+    if(!current) return false;
+    if(searchVal === current.data){
+        return true;
+    } else {
+        if(searchVal < current.data){
+            return isPresent(searchVal, current.left);
+        } else {
+            return isPresent(searchVal, current.right);
+        }
+    }
+}
+
 //findMin: start at the root, the min value is on the left side of the tree at the node for which node.left is null
 function findMin(){
     let current = this.root;
