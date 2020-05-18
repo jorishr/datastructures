@@ -6,17 +6,20 @@ function isPresent(data){
     } else {
         let current = this.root;
         if(current.data === data) {
-        console.log(`Node ${data} is present in the tree`);
+            //console.log(`Node ${data} is present in the tree`);
+            return true;
         } else if(data < current.data){
             while(current.left && current.data !== data){
-            current = current.left;
-        }
-        current.data === data ? console.log(`Node ${data} is present in the tree`) : console.log(`Node ${data} not found in the tree`);
+                current = current.left;
+            }
+            return current.data === data;
+            //current.data === data ? console.log(`Node ${data} is present in the tree`) : console.log(`Node ${data} not found in the tree`);
         } else {
             while(current.right && current.data !== data){
-            current = current.right;
+                current = current.right;
             }
-        current.data === data ? console.log(`Node ${data} is present in the tree`) : console.log(`Node ${data} not found in the tree`);  
+            return current.data === data;
+            //current.data === data ? console.log(`Node ${data} is present in the tree`) : console.log(`Node ${data} not found in the tree`);  
         }
     }
 }
@@ -27,6 +30,7 @@ function findMin(){
         current = current.left;
     }
     console.log(`The lowest value in the tree is ${current.data}`);
+    return current.data;
 }
 //findMax, starting at root, the max value is on the right side at the node where node.right is null
 function findMax(){
@@ -35,6 +39,7 @@ function findMax(){
         current = current.right;
     }
     console.log(`The highest value in the tree is ${current.data}`);
+    return current.data;
 }
 module.exports = {
     isPresent,
