@@ -1,5 +1,6 @@
-//isPresent
-/* function isPresent(data){
+/* 
+//isPresent (while loop version, see recursive version below)
+function isPresent(data){
     if(this.root === null){
         console.log('This tree is empty.');
         return null;
@@ -37,8 +38,11 @@ function isPresent(searchVal, current = this.root){
         }
     }
 }
+/*
+findMin: start at the root, the min value is on the left side of the tree at 
+the node for which node.left is null or undefined. You can use a while loop or
+a recursive approach.
 
-//findMin: start at the root, the min value is on the left side of the tree at the node for which node.left is null
 function findMin(){
     let current = this.root;
     while(current.left){
@@ -46,8 +50,17 @@ function findMin(){
     }
     console.log(`The lowest value in the tree is ${current.data}`);
     return current.data;
+} */
+function findMin(current = this.root){
+    if(current.left) {
+        return findMin(current.left);
+    } else return current.data;
 }
-//findMax, starting at root, the max value is on the right side at the node where node.right is null
+/* 
+findMax, starting at root, the max value is on the right side at the node where
+node.right is null or undefined. You can use a while loop or a recursive 
+approach.
+
 function findMax(){
     let current = this.root;
     while(current.right){
@@ -55,6 +68,12 @@ function findMax(){
     }
     console.log(`The highest value in the tree is ${current.data}`);
     return current.data;
+}
+*/
+function findMax(current = this.root){
+    if(current.right) {
+        return findMax(current.right);
+    } else return current.data;
 }
 module.exports = {
     isPresent,

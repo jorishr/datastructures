@@ -68,10 +68,10 @@ console.log(myTree);
 myTree.printInOrder();
 myTree.printPreOrder();
 myTree.printPostOrder();
-console.log(myTree.isPresent(3));
-console.log(myTree.isPresent(10));
-myTree.findMin();
-myTree.findMax();
+console.log('Value 3 is present in the tree?', myTree.isPresent(3));
+console.log('Value 10 is present in the tree?', myTree.isPresent(10));
+console.log('Lowest value in the tree is:', myTree.findMin());
+console.log('Highest value in the tree is:', myTree.findMax());
 
 //Test trees for node removal
 const oneNodeTree = new Tree();
