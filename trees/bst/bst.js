@@ -24,6 +24,7 @@ const findMinHeight    = require('./height').findMinHeight;
 const findMaxHeight    = require('./height').findMaxHeight;
 const isBalanced       = require('./balance').isBalanced;
 const balanceTree      = require('./balance').balanceTree;
+const isBst            = require('./isBst').isBst;
 
 Tree.prototype.insert         = insert;
 Tree.prototype.remove         = remove;
@@ -38,6 +39,7 @@ Tree.prototype.findMinHeight  = findMinHeight;
 Tree.prototype.findMaxHeight  = findMaxHeight;
 Tree.prototype.isBalanced     = isBalanced;
 Tree.prototype.balanceTree    = balanceTree;
+Tree.prototype.isBst          = isBst;
 /*
 myTree
             3
@@ -155,6 +157,7 @@ console.log(myBst.isPresent(12));
 console.log(myBst.isPresent(9));
 console.log(myBst.isPresent(5));
 console.log(myBst.isPresent(50));
+console.log('Is Binary Search Tree?', myBst.isBst());
 
 //Tree height and balance
 console.log(`This tree has a min height of ${myBst.findMinHeight()}`);
