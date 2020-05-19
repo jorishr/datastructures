@@ -30,7 +30,7 @@ module.exports = function remove(data){
             return null;
         }
         if(data === node.data){
-            //no children
+            //no children (leaf node or childless root)
             if(node.left === null && node.right === null){
                 console.log(`Childless node ${node.data} removed from tree.`);
                 return null;
@@ -48,12 +48,12 @@ module.exports = function remove(data){
             //both left and right child nodes
             let tempNode = node.right;
             while(tempNode.left){
-                tempNode = tempNode.left;
+                tempNode = tempNode.left;   //find min value in right subtree
             }
-            node.data = tempNode.data;
+            node.data = tempNode.data; //replace value
             console.log(`Node ${data} removed successfully and its position in the tree is now occopied by ${node.data}. Start removing duplicate node ${node.data}...`);
-            node.right = removeNode(node.right, tempNode.data);
-            return node;
+            node.right = removeNode(node.right, tempNode.data); //delete duplicate
+            return node; 
 
         } else if(data < node.data){
             console.log(`The current node ${node.data} > ${data}. Recursive fn call will be initiated with the next node: ${node.left.data}`);
@@ -69,7 +69,29 @@ module.exports = function remove(data){
     this.size--;
 }
 /*
-Remove a node with left AND right child nodes.
+Remove a node with left AND right child nodes. 
+The idea is to reduce the complexity to a case of deleting just one child node.
+Instead of deleting the node directly, replace it with another value that is
+already present in the subtree: the minimum value in the right subtree.
+
+This min value in the right subtree is guaranteed to be bigger the values below
+in the right subtree and guaranteed to be bigger than any value on left 
+subtree. The property of the BST is thus preserved.
+
+Also the min value is guaranteed to not have left child. It can only have a 
+right child subtree, otherwise it would not be the minimun value.
+
+This solves our problem. We can now replace the value we want to delete with
+a value that preserves the BST order and that has at most just one child. We 
+know to how to delete a node without children or a node with just one child 
+by adjusting the pointer of the previous node.
+
+In sum:
+- find min value in right subtree
+- copy that value into the targeted node we want deleted
+- delete duplicate from right subtree
+
+Note that you can also use the max value in the left subtree.
 Example:
                     3
         1                       5
@@ -77,24 +99,26 @@ Example:
                                 7               11
                             6       8       10      12  
 
-remove(5) -> this.root = removeNode(3, 5)
-data(5) > node.data(3)
-    -> recursive fn call removeNode(node.right(5), 5)
-    -> return node, thus this.root = 3; and keep its original value
+remove(5) 
+    -> this.root = removeNode(3, 5) -> returns 3 
+        data(5) > node.data(3)
+        -> node.right = removeNode(5, 5) -> returns node(6)
+            -> data(5) === node.data(5)
+                -> find smallest value in right subtree: tempNode = 6
+                -> node.value(5) is replaced by 6
+                -> remove duplicate: node(6).right(9) = removeNode(9, 6) -> returns node(9)
+                    -> data(6) < node.data(9) 
+                    -> node(9).left(7) = removeNode(7, 6) -> returns node(7) 
+                        -> data(6) < node.data(7)
+                        -> node(7).left(6) = removeNode(6, 6) = null
+                            -> data(6) === node.data(6)
+                            -> no children -> return null
+        -> return node (this.root = 3) original value unchanged
 
-removeNode(5,5) 
-data(5) === node.data(5)
-three options: one child left, one child right, two children
-two children found: 
-Use a tempNode variable to store the smallest value in the lower levels of the 
-tree while traversing down the left side with a while loop
-- the current node (node.data(5)) will not be removed but its value is replaced
-by the smallest node found in the remaining lower levels of the tree, in this 
-example 6.
-- this means that the original node.left and node.right values remains 
-unchanged. This is ok for the node.left, in this example 4. 
-- on the node.right however we now have a duplicate value that needs to be 
-removed, in this example 6.
-- fix the tree below node.right with a recursive call once more starting at 
-node.right(9) removeNode(node.right(9), 6);
+TIME COMPLEXITY EVALUATION
+Time complexity depends on how deep we to travel the right subtree to find the 
+minimum value. Thus time complexity is related to the height of the tree, O(h).
+
+In a skewed tree the height may become n, resulting in O(n)
+
 */
