@@ -1,83 +1,50 @@
-    /*
-    - The min height of a tree is the distance from the root node to the first node without two children
-    - if the tree is empty return -1
-    - with a recursive function we try to find the a node without two children:
-        --a node has two children, 
-        --a node for which node.left == null, thus return -1
-        --a node for which node.right == null. thus return -1 
-        --a node for which both node.left and node.right are null, thus both return -1 
-    - track the node levels with two variables left and right that increment based upon the comparison after each fn call
-    - if a node has two children both left and right initiate a new recursive fn call
-    - eventually a node will be missing a left node, a right node or both
-    - if only one node is missing, for example the node.left == null, the variable left will be -1 while the variable right will initiate another recursive fn call
-    - for each iteration you compare the values for left and right
-    - for a node without two children both the left and right variables have a value of -1, whereby we return right + 1 or 0
-    - for a node with only a node.left the variable values are: left = 0 and right = - 1, whereby we return left + 1 or 1
-    - for a node with only a node.right the variable values are: left = -1 and right = 0, whereby we return left + 1 or 0
-    
-    Example: 
-               5
-            4     6
-              3
-            2
-    findMinHeigth(5)
-      left  = findMinHeight(4) -> result = 0
-        left  = findMinHeight(null) -> -1
-        right = findMinHeight(3) -> result = 0
-          left  = findMinHeight(2) -> result = 0
-            left  = findMinHeight(null) -> -1
-            right = findMinHeight(null) -> -1
-            result left=right -> right + 1 -> -1 + 1 = 0
-          right = findMinHeight(null) -> -1
-          result left > right -> right + 1 -> -1 + 1 = 0
-        result left < right -> left  +  1 -> -1 + 1 = 0
-      right = findMinHeight(6) -> 0
-        left  = findMinHeight(null) -> -1
-        right = findMinHeight(null) -> -1
-        result left=right -> right +1 -> -1 + 1 = 0
-      final result left(0) = right(0) -> right + 1 -> 0 + 1 = 1;
-      
-    Thus the min height for this tree is 1, the distance from the root node to the first node without two children is 1.
-    */
-function findMinHeight(node = this.root){
-    if(node === null){
-        return -1;
-    }
-    let left  = this.findMinHeight(node.left);
-    let right = this.findMinHeight(node.right);
-    if(left < right){
-        return left + 1;
-    } else {
-        return right + 1;
-    }
-}
 /*
-- the max height of a tree is the distance from the root node to the most bottom node or leaf
-  Example: 
-           5
-        4     6
+TREE HEIGHT OR TREE DEPTH
+Find the shortest or longest possible path (number of edges) from the root node
+to a leaf node.
+
+For example, in the tree below the min height would be the distance from the
+root node to leaf node 6. The max height is the distance to leaf node 2.
+            5     
+      4           6
           3
         2
-  findMaxHeigth(5)
-  left  = findMaxHeight(4) -> result = 2
-    left  = findMaxHeight(null) -> -1
-    right = findMaxHeight(3) -> result = 1
-      left  = findMaxHeight(2) -> result = 0
-        left  = findMaxHeight(null) -> -1
-        right = findMaxHeight(null) -> -1
-        result left=right -> right + 1 -> -1 + 1 = 0
-      right = findMaxHeight(null) -> -1
-      result left > right -> left + 1 -> 0 + 1 = 1
-    result left < right -> right + 1 -> 1 + 1 = 2
-  right = findMaxHeight(6) -> 0
-    left  = findMaxHeight(null) -> -1
-    right = findMaxHeight(null) -> -1
-    result left=right -> right + 1 -> -1 + 1 = 0
-  final result left(2) > right(0) -> left + 1 -> 2 + 1 = 3;
-  
-Thus the max height for this tree is 3, the distance from the root node to bottom level node is 3.
 
+We have a leaf node if the parent node has a pointer (left or right) that is 
+null or undefined.
+
+If the tree is empty return -1.
+
+The best way to approach this problem is to consider the BST as tree of 
+left subtrees and right subtrees and to calculate the height for each node in a
+recursive manner. Start at the root node.
+
+The height of left and right subtrees is stored in variable that is the result 
+of all the recursive calls that get added to the stack. 
+
+The recursion stops when a node does not have a left or right child node and 
+the result of findMinHeight(null) returns - 1
+
+Then compare height of left subtree with height of right subtree. Return the 
+lowest value and add + 1 for the connection between root node and subtree. 
+
+For each recursive call the left and right variables are compared and the
+result is added up.
 */
+function findMinHeight(node = this.root){
+  //empty tree (-1) or no child present 
+  if(node === null){
+    return -1;
+  }
+  let left  = this.findMinHeight(node.left);
+  let right = this.findMinHeight(node.right);
+  //add one for connection root node to subtree
+  if(left < right){
+    return left + 1;
+  } else {
+    return right + 1;
+  }
+}
 function findMaxHeight(node = this.root){
     if(node === null){
         return -1;
@@ -90,7 +57,64 @@ function findMaxHeight(node = this.root){
         return right + 1;
     }
 }
+/**
+In the example tree the stack calls look like this, fn() = findMinHeiht():
 
+fn(5)
+  -> left  = fn(4)
+      -> left  = fn(null)
+                  -> return -1
+      -> right =  fn(3) 
+                  -> left  = fn(null)
+                              -> return -1
+                  -> right = fn(2)
+                              -> left  = fn(null)
+                                          -> return -1
+                              -> right = fn(null)
+                                          -> return -1
+                              -> left === right return -1 + 1 = 0
+                  -> left < right -> return 0 + 1 = 1
+      -> left < right -> return 1 + 1 = 2 
+  -> right = fn(6) 
+      -> left  = fn(null)
+                  -> return - 1
+      -> right = fn(null)
+                  -> return - 1
+      -> left < right -> return -1 + 1 = 0                      
+  
+  -> left < right -> return 0 + 1 = 1 -> findMinHeight() 
+ 
+Thus the minimun height for this tree is 1. The distance from the root node to
+the first node without two children is 1.
+
+To find the max height, simply reverse the compare statement.
+
+In the example tree the stack calls look like this, fn() = findMaxHeiht():
+
+fn(5)
+  -> left  = fn(4)
+      -> left  = fn(null)
+                  -> return -1
+      -> right =  fn(3) 
+                  -> left  = fn(null)
+                              -> return -1
+                  -> right = fn(2)
+                              -> left  = fn(null)
+                                          -> return -1
+                              -> right = fn(null)
+                                          -> return -1
+                              -> left === right return -1 + 1 = 0
+                  -> left > right -> return 0 + 1 = 1
+      -> left > right -> return 1 + 1 = 2 
+  -> right = fn(6) 
+      -> left  = fn(null)
+                  -> return - 1
+      -> right = fn(null)
+                  -> return - 1
+      -> left > right -> return -1 + 1 = 0                      
+  
+  -> left > right -> return 2 + 1 = 3 -> findMaxHeight()
+*/
 module.exports = {
     findMaxHeight,
     findMinHeight
