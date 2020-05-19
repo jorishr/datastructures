@@ -13,10 +13,10 @@ Functionality is imported form partial js files and added to the prototype.
 const Tree             = require('./constructor');
 const insert           = require('./insert');
 const remove           = require('./remove');
-const printInOrder     = require('./print').printInOrder;
-const printPostOrder   = require('./print').printPostOrder;
-const printPreOrder    = require('./print').printPreOrder;
-const printLevelOrder  = require('./print').printLevelOrder;
+const printInOrder     = require('./traversal').printInOrder;
+const printPostOrder   = require('./traversal').printPostOrder;
+const printPreOrder    = require('./traversal').printPreOrder;
+const printLevelOrder  = require('./traversal').printLevelOrder;
 const isPresent        = require('./search').isPresent;
 const findMin          = require('./search').findMin;
 const findMax          = require('./search').findMax;

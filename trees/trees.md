@@ -20,6 +20,8 @@ A tree is a recursive data structure because each child node can be considered a
 
 A tree with N nodes will have N-1 links or edges that connect the nodes because all the nodes have exactly one incomming edge, except the root node.
 
+Note that a tree is also considered to be a special kind of the graph data structure.
+
 ## Tree depth and height
 The depth for node x is the LENGTH of the path from the root node to node x or the number of edges from root to node x.
 
@@ -27,7 +29,7 @@ The depth for the root node is 0.
 
 The height for node x is the longest path from node x to a leaf node. The height of a leaf node is 0. 
 
-The height of the root node is considered the tree height, thus the longest possible path from root to leaf node. Height of an empty tree is -1 or null.
+The height of the root node is considered the tree height or tree depth, thus the longest possible path from root to a leaf node. Height of an empty tree is -1 or null.
 
 ## Binary tree
 A BINARY tree is a tree whereby each node can have at most TWO child nodes, a left and right node. Thus each node has zero, one or two children. 
@@ -67,6 +69,17 @@ h = log2(15 + 1) - 1 = log2(16) - 1 = 4 - 1 = 3
 
 OR take the absolute value of h = |log2(n)| = |log2(15)| = |3.906...| = 3
 ```
+
+## Tree traversal
+A tree is not a linear but hierachical structure. For each node we visit there may be more than one posibility to go to a 'next' node. To read or process each node in the tree just once we can use two strategies: breadth first or depth first.
+
+Breadth-first means you visit all nodes on each level of depth from left to right before going to the next level: start at root (level 0), then all nodes on level 1, then all nodes on level 2, etc. Thus for any node, you first visit all children before going on to visit any grandchildren. The level-order algorithm does just that.
+
+Depth-first on the other hand will visit the entire subtree of a child node before visting other child nodes. These algorithms can start at the root node or left subtree or right subtree. Examples are:
+- in-order: left subtree -> root -> right subtree
+- pre-order: root -> left subtree -> right subtree 
+- post-order: left subtree -> right subtree -> root  
+
 ## Cost of operations
 The time cost of operations on a tree is related to the height of the tree. The more dense or closest to being a perfect binary tree the less height is needed and the more efficient the operations on the tree can be.
 
