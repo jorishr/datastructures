@@ -18,6 +18,7 @@ const printPostOrder   = require('./traversal').printPostOrder;
 const printPreOrder    = require('./traversal').printPreOrder;
 const printLevelOrder  = require('./traversal').printLevelOrder;
 const isPresent        = require('./search').isPresent;
+const findNode        = require('./search').findNode;
 const findMin          = require('./search').findMin;
 const findMax          = require('./search').findMax;
 const findMinHeight    = require('./height').findMinHeight;
@@ -25,6 +26,8 @@ const findMaxHeight    = require('./height').findMaxHeight;
 const isBalanced       = require('./balance').isBalanced;
 const balanceTree      = require('./balance').balanceTree;
 const isBst            = require('./isBst').isBst;
+const successor        = require('./successor').successor;
+const predecessor      = require('./successor').predecessor;
 
 Tree.prototype.insert         = insert;
 Tree.prototype.remove         = remove;
@@ -35,11 +38,14 @@ Tree.prototype.printLevelOrder= printLevelOrder;
 Tree.prototype.findMax        = findMax;
 Tree.prototype.findMin        = findMin;
 Tree.prototype.isPresent      = isPresent;
+Tree.prototype.findNode       = findNode;
 Tree.prototype.findMinHeight  = findMinHeight;
 Tree.prototype.findMaxHeight  = findMaxHeight;
 Tree.prototype.isBalanced     = isBalanced;
 Tree.prototype.balanceTree    = balanceTree;
 Tree.prototype.isBst          = isBst;
+Tree.prototype.successor      = successor;
+Tree.prototype.predecessor    = predecessor;
 /*
 myTree
             3
@@ -74,7 +80,16 @@ console.log('Value 3 is present in the tree?', myTree.isPresent(3));
 console.log('Value 10 is present in the tree?', myTree.isPresent(10));
 console.log('Lowest value in the tree is:', myTree.findMin());
 console.log('Highest value in the tree is:', myTree.findMax());
+console.log(myTree.findNode(4));
+console.log(myTree.findNode(6));
+console.log(myTree.findNode(100));
+console.log('successor of 2',myTree.successor(2));
+console.log('successor of 1',myTree.successor(1));
+console.log('successor of 4',myTree.successor(4));
+console.log('successor of 5',myTree.successor(5));
+console.log('successor of 6',myTree.successor(6));
 
+console.log('\n\n')
 //Test trees for node removal
 const oneNodeTree = new Tree();
 oneNodeTree.insert(5);
@@ -112,28 +127,6 @@ console.log(rightSideTree2);
 rightSideTree2.remove(5);
 rightSideTree2.printInOrder();
 
-/*
-Remove a node with left AND right child nodes.
-Example:
-                        3
-                1                 5
-            0    2          4         9
-                                    7      11
-                                6   8  10  12  
-
-- remove(5) -> this.root = removeNode(3, 5)
-- data(5) > node.data(3)
--> recursive fn call removeNode(node.right(5), 5)
--> return node, thus this.root = 3; and keep its original value
-- removeNode(5,5) with data(5) === node.data(5)
-- three options (one child left, one child right, two children)
-- two children found: use a tempNode variable to store the smallest value in the lower levels of the tree while traversing down the left side with a while loop
-- the current node (node.data(5)) will not be removed but its value is replaced by the smallest node found in the remaining lower levels of the tree, in this example 6.
-- this means that the original node.left and node.right values remain unchanged. This is ok for the node.left, in this example 4. 
-- on the node.right however we now have a duplicate value that needs to be removed, in this example 6.
-- fix the tree below node.right with a recursive call once more starting at node.right(9) removeNode(node.right(9), 6);
-- see logs to see what happens in each step
-*/
 const myBst = new Tree();
 myBst.insert(3);
 myBst.insert(1);
@@ -184,3 +177,25 @@ balancedTestTree.printLevelOrder();
 console.log(testTree.isPresent(1))
 console.log(testTree.isPresent(3))
 console.log(testTree.isPresent(4))
+
+console.log('successor of 2',myBst.successor(2));
+console.log('successor of 1',myBst.successor(1));
+console.log('successor of 4',myBst.successor(4));
+console.log('successor of 5',myBst.successor(5));
+console.log('successor of 7',myBst.successor(7));
+console.log('successor of 8',myBst.successor(8));
+console.log('successor of 9',myBst.successor(9));
+console.log('successor of 10',myBst.successor(10));
+console.log('predecessor of 2',myBst.predecessor(2));
+console.log('predecessor of 11',myBst.predecessor(11));
+console.log('predecessor of 12',myBst.predecessor(12));
+console.log('predecessor of 1',myBst.predecessor(1));
+console.log('predecessor of 4',myBst.predecessor(4));
+console.log('predecessor of 5',myBst.predecessor(5));
+console.log('predecessor of 7',myBst.predecessor(7));
+console.log('predecessor of 8',myBst.predecessor(8));
+console.log('predecessor of 9',myBst.predecessor(9));
+console.log('predecessor of 10',myBst.predecessor(10));
+console.log('predecessor of 11',myBst.predecessor(11));
+console.log('predecessor of 12',myBst.predecessor(12));
+myBst.printInOrder();

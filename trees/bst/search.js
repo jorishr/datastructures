@@ -38,6 +38,20 @@ function isPresent(searchVal, current = this.root){
         }
     }
 }
+//same function as isPresent that returns the node instead of boolean
+function findNode(searchVal, current = this.root){
+    //empty tree
+    if(!current) return null;
+    if(searchVal === current.data){
+        return current;
+    } else {
+        if(searchVal < current.data){
+            return findNode(searchVal, current.left);
+        } else {
+            return findNode(searchVal, current.right);
+        }
+    }
+}
 /*
 findMin: start at the root, the min value is on the left side of the tree at 
 the node for which node.left is null or undefined. You can use a while loop or
@@ -77,6 +91,7 @@ function findMax(current = this.root){
 }
 module.exports = {
     isPresent,
+    findNode,
     findMax,
     findMin
 }
