@@ -1,3 +1,8 @@
+// to-do: weighted or not is property of the edges, not the graph
+// which function belong to the vertex class?
+// can I use an edge class here?
+// use objects instead of arrays for vertices and edges?
+// implement with linked list 
 class Graph {
     constructor(directed = false, weighted = false){
         this.vertices    = [];
@@ -28,7 +33,7 @@ class Graph {
         }
         return this;
     }
-    insertEdge(start, end, weight = 1){
+    insertEdge(start, end, weight = 0){
         let indexStart = this.getVertexIndex(start);
         let indexEnd   = this.getVertexIndex(end);
         if(this.isDirected){

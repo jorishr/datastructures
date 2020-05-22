@@ -1,20 +1,18 @@
-GUIDE TO SOLVING ALGORITHM PROBLEMS
+# Guide to solving algoritm problems
 
-STEP 1
+## Step 1
 - read the problem three times or to understand all aspects of the problem
 - ask questions if something is unclear
 - don't read too much into the problem, assume that the scope is what you can actually read, don't add unnecessary edge cases by thinking in terms of an expanded "real world" problem
 
-STEP 2
+## Step 2
 - coding is automating problems that can be done manually, solve the problem manually with a couple or three sets of example data, optimize
 
-STEP 3
+## Step 3
 - write pseudo code
 
-STEP 4
+## Step 4
 - convert pseudo code into correct syntax code
 
-STEP 5 (optional)
+## Step 5 (optional)
 - optimize/simplify code
-
-
