@@ -1,0 +1,11 @@
+{
+  "name": "search_algorithms",
+  "version": "1.0.0",
+  "description": "Search related algorithms implemented in Javascript",
+  "main": "binary_search.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Joris Raymaekers <joris@jorisr.com> (jorisr.com)",
+  "license": "ISC"
+}
