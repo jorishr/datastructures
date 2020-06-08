@@ -1,0 +1,11 @@
+{
+  "name": "sorting_algorithms",
+  "version": "1.0.0",
+  "description": "Sorting algortithm implementations in Javascript with Jest testing",
+  "main": "bubble_sort.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Joris Raymaekers <joris@jorisr.com> (jorisr.com)",
+  "license": "ISC"
+}
