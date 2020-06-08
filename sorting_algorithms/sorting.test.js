@@ -2,6 +2,7 @@ const swap = require('./swap');
 const bubbleSort = require('./bubble_sort');
 const selectionSort = require('./selection_sort');
 const insertionSort = require('./insertion');
+const mergeSort = require('./merge'); 
 
 describe('Array sorting algorithm tests', () => {
     test('Swap array values in place', () => {
@@ -35,11 +36,19 @@ describe('Array sorting algorithm tests', () => {
         expect(selectionSort([1,2,3,4,5])).toStrictEqual([1,2,3,4,5]);
     })
     test('Insertion sort arranges integer array in ascending order', () => {
-        expect(selectionSort([2,3,5,4,1])).toStrictEqual([1,2,3,4,5]);
-        expect(selectionSort([1,3,5,4,2])).toStrictEqual([1,2,3,4,5]);
-        expect(selectionSort([1,2,3,4,5])).toStrictEqual([1,2,3,4,5]);
-        expect(selectionSort([])).toStrictEqual([]);
-        expect(selectionSort([1])).toStrictEqual([1]);
-        expect(selectionSort([2,1])).toStrictEqual([1,2]);
+        expect(insertionSort([2,3,5,4,1])).toStrictEqual([1,2,3,4,5]);
+        expect(insertionSort([1,3,5,4,2])).toStrictEqual([1,2,3,4,5]);
+        expect(insertionSort([1,2,3,4,5])).toStrictEqual([1,2,3,4,5]);
+        expect(insertionSort([])).toStrictEqual([]);
+        expect(insertionSort([1])).toStrictEqual([1]);
+        expect(insertionSort([2,1])).toStrictEqual([1,2]);
+    })
+    test('Merge sort arranges integer array in ascending order', () => {
+        expect(mergeSort([2,3,5,4,1])).toStrictEqual([1,2,3,4,5]);
+        expect(mergeSort([1,3,5,4,2])).toStrictEqual([1,2,3,4,5]);
+        expect(mergeSort([1,2,3,4,5])).toStrictEqual([1,2,3,4,5]);
+        expect(mergeSort([])).toStrictEqual([]);
+        expect(mergeSort([1])).toStrictEqual([1]);
+        expect(mergeSort([2,1])).toStrictEqual([1,2]);
     })
 })
