@@ -1,0 +1,11 @@
+{
+  "name": "data_structures",
+  "version": "1.0.0",
+  "description": "Datastructure implementation and exercises in Javascript",
+  "main": "evaluate_expressions.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Joris Raymaekers <joris@jorisr.com> (jorisr.com)",
+  "license": "ISC"
+}

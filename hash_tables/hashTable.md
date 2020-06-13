@@ -1,5 +1,5 @@
 # Hash tables
-The concept of a hash table is a key-value. 
+The concept of a hash table is a key-value pair. 
 
 A hashtable can be used to creat ASSOCIATIVE ARRAYS - a map of key value pairs, or OBJECTS.
 
