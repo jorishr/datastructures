@@ -28,7 +28,7 @@ For undirected graphs the matrix is SYMMETRIC as Mij = Mji because each connecti
 ```
 
 ## Time complexity
-The use of an adjency matrix reduces the time cost of common operations:
+The use of an adjacency matrix reduces the time cost of common operations:
 - Finding all adjacent nodes of a given node is a three step process using linear search. First, look op the index of the node in the vertexArray. Second, loop over the corresponding row in the matrix and return the index numbers numbers for which the value is 1. Third, look up the index in the vertexArray and return the name of the node(s).
 
 All three steps have a time complexity of O(n) at worst with n = |V| n.
@@ -38,7 +38,7 @@ All three steps have a time complexity of O(n) at worst with n = |V| n.
 To avoid looking up the indices in the vertexArray a HASH TABLE could be implemented with key-value pair that store the vertex names and there corresponding index. Then the above operation will take constant time O(1), at the expense of the memory storage capacity for the hash table.
 
 ## Space complexity
-Operations on this adjency matrix are much more efficient in terms of time complexity but the big draw back here is that an array of n^2 elements is required to store all the information about the connections. This situation may be unavoidable in a dense graph but should not be used for sparse graphs.
+Operations on this adjacency matrix are much more efficient in terms of time complexity but the big draw back here is that an array of n^2 elements is required to store all the information about the connections. This situation may be unavoidable in a dense graph but should not be used for sparse graphs.
 
 Usually we will work with sparse graphs. A social network site of 1 billion (10^9) users can serve as an example: the average person does not have a connection to all other social network users. The typical user may have around 500 or 1000 (10^3) connections and the most connected outliers may have a million (10^6) connections.
 

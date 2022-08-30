@@ -1,11 +1,11 @@
 # Big-O-notation
-Big O notation is an indicator of algoritmic efficiency. It indicates how the run time of an algorithm scales with respect to the size of the input data. It is a way of measuring the cost of an algorithm in time and memory resources.
+Big O notation is an indicator of algorithmic efficiency. It indicates how the run time of an algorithm scales with respect to the size of the input data. It is a way of measuring the cost of an algorithm in time and memory resources.
 
-Big O is an asymptothic notation whereby the constant and less significant factors are ignored to simplify the time calculation while still maintaining an upper bound (or lower bound) that is close to but more (or less) than the actual run time of the function. This can be done because for very large n values, the less significant factors don't add to or substract much from the result.
+Big O is an asymptotic notation whereby the constant and less significant factors are ignored to simplify the time calculation while still maintaining an upper bound (or lower bound) that is close to but more (or less) than the actual run time of the function. This can be done because for very large n values, the less significant factors don't add to or subtract much from the result.
 
-Thus T(fn) = 2n^2 + 2 + n will be reduced to T(gn) = n^2 whereby gn is bigger than and relatively close fn resulting in an upperbound of O(n^2). 
+Thus T(fn) = 2n^2 + 2 + n will be reduced to T(gn) = n^2 whereby gn is bigger than and relatively close fn resulting in an upper bound of O(n^2). 
 
-To calculate the lower bound of the growth rate, Omega notation is used. The best time estimation is obtained throught the tight bound or Theta notation.
+To calculate the lower bound of the growth rate, Omega notation is used. The best time estimation is obtained through the tight bound or Theta notation.
 
 ## Big-O values
 O(1), or O of one refers to constant run time related to the size of the data. Whether the input data is small or large, the algorithm will take x amount of time to complete.
@@ -17,11 +17,11 @@ The perfect example of O(log n) is a binary search. You go to the middle value, 
 
 The variant O(n log n) is like above but multiplied by n, thus being less efficient the bigger n value.
 
-O(n^2), O squared represents an algorithm that scales quadratically and thus is very inefficient. In fact it may never end when n is a large number. A commonly known example for this is the Bubblesort, which uses two loops that iterate over the same dataset.
+O(n^2), O squared represents an algorithm that scales quadratically and thus is very inefficient. In fact it may never end when n is a large number. A commonly known example for this is the bubble-sort, which uses two loops that iterate over the same dataset.
 
 O(2^n), represents an exponential time complexity. Execution time will double with each new element.
 
-O(n!) algorithms will execute in n factorial time per every new operation. Extremely unperformant.
+O(n!) algorithms will execute in n factorial time per every new operation. Extremely poorly performant.
 
 Consider the example:
 ```
@@ -38,9 +38,9 @@ Excellent: O(1)
 Good: O(log n)
 fair: O(n)
 bad: O(n log n)
-very unperformant: O(n^2), O(2^n), O(n!)
+performs poorly: O(n^2), O(2^n), O(n!)
 
-## Four keys rules to describe an algoritm's Big O Notation complexity
+## Four keys rules to describe an algorithm's Big O Notation complexity
 - If you have multiple steps, you add them up. An example would be to loop through two arrays.
 ```
 function(){

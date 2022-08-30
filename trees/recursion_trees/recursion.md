@@ -1,4 +1,10 @@
 # Recursion
+- [Recursion](#recursion)
+  - [Factorial example](#factorial-example)
+    - [Time and space complexity](#time-and-space-complexity)
+  - [Fibonacci sequence example](#fibonacci-sequence-example)
+    - [Time and space complexity calculation](#time-and-space-complexity-calculation)
+
 Recursion is the process of sub-dividing a problem into multiple, smaller instances of the SAME problem. Put into practice, that generally means writing a function that calls or invokes itself multiple times.
 
 ## Factorial example
@@ -16,7 +22,7 @@ function factorial(n){
 ```
 Here the return value of the factorial function calls itself with a parameter that is one less. 
 
-Programatically, the current function is paused and put into memory, waiting for the subsequent recursion call to return a value. The datastructure used for this purpose is the STACK or call stack. 
+Programmatically, the current function is paused and put into memory, waiting for the subsequent recursion call to return a value. The data structure used for this purpose is the STACK or call stack. 
 
 At the bottom of the stack we get the main program function which has a pending multiplication that depends on the answer of the recursive call factorial(n-1).
 
@@ -45,7 +51,7 @@ Once you reach factorial(0) the answer is 1 and as a cascade the stack can be cl
 The time complexity calculation of the above factorial function: 
 - compare if n = 1 return 1	-> one constant unit of time
 - n * fac(n - 1) 	
-    -> one constant unit of time for multiplication and one constant unit of time for substraction
+    -> one constant unit of time for multiplication and one constant unit of time for subtraction
 - repeated n times
 ```
 T(n) = T(n - 1) + 3 for n > 0, T(0) = 1 constant unit of time
@@ -73,7 +79,7 @@ A potential issue with this recursive approach is that for very large numbers, t
 Possible solutions for this issue are [MEMOIZATION](memoization.md) and [TAIL RECURSION](tail_recursion.md). 
 
 ## Fibonacci sequence example
-Another classic example case for recursion is the fibonacci sequence: 0 1 1 2 3 5 8 13 21 ...
+Another classic example case for recursion is the Fibonacci sequence: 0 1 1 2 3 5 8 13 21 ...
 
 Basic recursive function:
 ```javascript
@@ -82,7 +88,7 @@ function fib(n){
     else fib(n - 2) + fib(n - 1);
 }
 ```
-To find the 4th fibonacci number you get:
+To find the 4th Fibonacci number you get:
 ```
 fib(4)	= fib(2) + fib(3)
 		= (fib(0) + fib(1)) + (fib(1) + fib(2))
@@ -105,7 +111,7 @@ This is extremely inefficient because:
 
 ### Time and space complexity calculation
 - comparison: 1 constant unit of time
-- substractions (n - 1) and (n - 2): 2 * 1 constant unit of time
+- subtractions (n - 1) and (n - 2): 2 * 1 constant unit of time
 - sum: 1 constant unit of time
 - function is repeated n - 1 and n - 2 times
 ```

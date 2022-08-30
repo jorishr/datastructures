@@ -1,9 +1,14 @@
 # Tail recursion
-A potential issue with the clasic recursive approach is that for very large data, the STACK requires a lot of memory because of the linear growth rate O(n). The recursion tree can become extremely deep, possibly overflowing the available stack space.
+- [Tail recursion](#tail-recursion)
+  - [Factorial example](#factorial-example)
+  - [Fibonacci sequence example](#fibonacci-sequence-example)
+  - [Is a number an even number](#is-a-number-an-even-number)
 
-Moreover, the fibonacci sequence example illustrates that when multiple recursion expressions are used in the same function that function may become very slow because it has to traverse multiple recursion trees with great depth and duplicate calculations.  
+A potential issue with the classic recursive approach is that for very large data, the STACK requires a lot of memory because of the linear growth rate O(n). The recursion tree can become extremely deep, possibly overflowing the available stack space.
 
-Tail recursion does not necessarly improves the running time but does dramatically reduce the memory consumption down to constant space.
+Moreover, the Fibonacci sequence example illustrates that when multiple recursion expressions are used in the same function that function may become very slow because it has to traverse multiple recursion trees with great depth and duplicate calculations.  
+
+Tail recursion does not necessarily improves the running time but does dramatically reduce the memory consumption down to constant space.
 
 ## Factorial example
 By using a helper function with an accumulator we can make the recursive process much more efficient.
@@ -31,7 +36,7 @@ Recursion tree:
 ```
 Time complexity for this function is O(n) 
 - compare: 1 constant unit of time
-- substract and multiply: 2 constant units of time
+- subtract and multiply: 2 constant units of time
 - repeated n times: T(n) = 3n
 
 The big gain however is the reduced space complexity from O(n) to O(1) as there is no need to store function calls on the stack. There is max one function call on the stack at any time.
@@ -52,7 +57,7 @@ function fib(n){
 ```
 By using tail recursion we can reduce the time complexity to a linear growth pattern O(n) and optimize the space complexity to a constant. 
 
-As with factorial example we can use a helper function. The helper function takes a pair of numbers as parameters whereby parameter a is the current number in the sequence. Paramter b is the next number in the sequence. The function updates the pair so that we move along in the sequence untill we get to n-th position. 
+As with factorial example we can use a helper function. The helper function takes a pair of numbers as parameters whereby parameter a is the current number in the sequence. Parameter b is the next number in the sequence. The function updates the pair so that we move along in the sequence until we get to n-th position. 
 
 ```javascript
 function go(n, a = 0, b = 1){
@@ -81,15 +86,15 @@ Recursion tree:
     go(1, 2, 3)
 ```
 Time complexity: 
-O(n) or linear growth rate. The function call is repeated n times with constant time for comparisons, substractions and calculatons (n * (1 + 1 + + 1 + 1)).
+O(n) or linear growth rate. The function call is repeated n times with constant time for comparisons, subtractions and calculations (n * (1 + 1 + + 1 + 1)).
  
 Space complexity: 
 O(1) or constant space because no function environments need to be stored on the call stack. Each recursive call is immediately resolved and popped from the stack.
 
-Another way to optimize the fibonacci sequence is by using [memoization](memoization.md).
+Another way to optimize the Fibonacci sequence is by using [memoization](memoization.md).
 
 ## Is a number an even number
-To check whether a number is even or odd you can use the module or a recursive function by  continuously substracting 2 untill you 0 (even) or 1 (odd). This approach is tail recursive and uses constant space O(1) while the running time is O(n).
+To check whether a number is even or odd you can use the module or a recursive function by  continuously subtracting 2 until you 0 (even) or 1 (odd). This approach is tail recursive and uses constant space O(1) while the running time is O(n).
 
 To account for negative number you can add additional condition that set the recursion in motion with the positive equivalent integer.
 ```javascript

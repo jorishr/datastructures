@@ -3,7 +3,7 @@ To avoid repeating calculations in a recursive function, we can store the result
 
 This approach can memory intensive but can save us a significant amount of running time.
 
-Consider basic fibonacci sequence recursive function:
+Consider basic Fibonacci sequence recursive function:
 ```javascript
 function fib(n){
     if(n <= 1) return n;    // 0 or 1

@@ -1,14 +1,15 @@
 # GRAPHS
-- Description
-- Example
-- Weigthed graphs
-- Number of edges
-- Path
-- Use cases
-- Tree as a graph
+- [GRAPHS](#graphs)
+  - [Description](#description)
+  - [Example](#example)
+  - [Weighted graphs](#weighted-graphs)
+  - [Number of edges](#number-of-edges)
+  - [Path](#path)
+  - [Connection strength](#connection-strength)
+  - [Use cases](#use-cases)
+  - [Tree as a graph](#tree-as-a-graph)
 
 ## Description
-
 A graph is a collection of ordered nodes (or vertices) connected by a set of edges.
 
 To represent this structure use pairs of a vertex and an edge whereby the order matters: 
@@ -22,7 +23,7 @@ The edges can be directed (one way) or undirected (two way) and can be represent
 
 Edges can also be self-loops whereby origin and destination are the same vertex.
 
-It is also possible to have parrallel edges whereby two vertices are connected through multipe directed or undirected edges. An example would be an intercity road network or flight network with muliple road/flights between two destinations.
+It is also possible to have parallel edges whereby two vertices are connected through multiple directed or undirected edges. An example would be an intercity road network or flight network with multiple road/flights between two destinations.
 
 Multi-edges and self-loops complicate working with graphs. 
 
@@ -58,10 +59,10 @@ E = {
 
 Thus we have a Graph (G) with set of 8 vertices (V) and a set of 11 edges (E). G = (8, 11)
 
-It is easier to work with graphs that have only directed edges, a digraph, or only undirected edges, an undirected graph. If not stated explicitely, assume the graph is undirected.  
+It is easier to work with graphs that have only directed edges, a digraph, or only undirected edges, an undirected graph. If not stated explicitly, assume the graph is undirected.  
 ```
-## Weigthed graphs
-In a standard unweigthed graph all edges are off equal importance or value (1). However, in some cases you may want to assign a greater or lesser importance to a connection. For example, some roads between city a and city b can be considered to be faster or better suited for certain type of traffic.
+## Weighted graphs
+In a standard unweighted graph all edges are off equal importance or value (1). However, in some cases you may want to assign a greater or lesser importance to a connection. For example, some roads between city a and city b can be considered to be faster or better suited for certain type of traffic.
 
 Each can get a label or weight attached that, for example, represents the distance.
 
@@ -70,7 +71,7 @@ Each can get a label or weight attached that, for example, represents the distan
 The maximum number of edges depends on the type of graph. 
 The minimum number of edges is always 0, as we can have a graph with only vertices and no connections or edges. 
 
-If we exclude multi-edges and self-loops the maximum number of edges wiil be:
+If we exclude multi-edges and self-loops the maximum number of edges will be:
 - directed graph with n = |V|:      n(n - 1)
 
 From each vertex an edge can connect to all other vertices (n - 1).  
@@ -115,7 +116,7 @@ v_a -> v_b -> v_h -> v_f -> v_g -> v_b -> v_a -> v_d
 
 A cycle is a path that starts and ends at the same vertex: no edges nor vertices are repeated except the starting vertex.
 
-A graph with no cylce is an ACYCLIC GRAPH. For example, a tree structure is an acyclic graph. You cannot return to the root without repeating edges or vertices. 
+A graph with no cycle is an ACYCLIC GRAPH. For example, a tree structure is an acyclic graph. You cannot return to the root without repeating edges or vertices. 
 
 A DAG is a directed acyclic graph:
         ---> C --> E ------
@@ -151,4 +152,3 @@ Web crawling can be seen a basic graph traversal.
 A tree, for example, has only one edge per parent-child relationship, resulting in n - 1 edges as all nodes have a parent except for the root node. The connections between nodes are usually directed through the use of a pointer. To make them undirected you can store an additional field in each node: the parent.
 
 All nodes are readable or visitable from the root node with only one possible path from root to the node. This makes the tree acyclic, you cannot start at root (or any given node) and return to that vertex without repeating and edge and/or vertex. 
-

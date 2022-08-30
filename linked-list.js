@@ -59,6 +59,8 @@ const node1 = new Node(100);
  *  - CLEAR LIST
  *  - PRINT LIST
  *  - PRINT NTH INDEX FROM END OF LIST
+ *  - PRINT IN REVERSE ORDER
+ *  - REVERSE THE LINKED LIST
  */
 class LinkedList {
     //The linkedlist is empty by default, thus no head and size 0

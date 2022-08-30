@@ -1,10 +1,10 @@
 # Hash tables
 The concept of a hash table is a key-value pair. 
 
-A hashtable can be used to creat ASSOCIATIVE ARRAYS - a map of key value pairs, or OBJECTS.
+A hash table can be used to create **associative arrays** - a map of key value pairs, or *objects*.
 
-It is the perfect solution for associating data with a name. For example, a persons name and a number of other atributes like address, email, age, etc.
-```
+It is the perfect solution for associating data with a name. For example, a persons name and a number of other attributes like address, email, age, etc.
+```js
 'John' => new Person('<id>','NewCity', 'Main Road', 30);
 
 hashtable.put('John', new Person(...));
@@ -17,14 +17,14 @@ a[1]	//-> 'Mary'
 a[2]	//-> 'Al'	
 ...
 ```
-To create that array you need a HASH FUNCTION. The hash function takes in a string, converts it to an integer and maps that integer into an index in the array.
+To create that array you need a **hash function**. The hash function takes in a string, converts it to an integer and maps that integer into an index in the array.
 
-The hashcode function maps from the KEY (string) into hashcode, and from the hashcode it maps into an index.
+The hash code function maps from the *key* (a string) into hash code, and from the hash code it maps into an index.
 
 ## Hash collision
-The potential number of hashcodes is FINITE and may be smaller than the number of string combinations which is infinite. Theoretically different strings could result into the same hash code.
+The potential number of hash codes is FINITE and may be smaller than the number of string combinations which is infinite. Theoretically different strings could result into the same hash code.
 
-Additionally, we map the hashcode into an array that may be much smaller than the millions of hashcode combinations. Thus different hashcodes can result into the same array index. This is called a HASH COLLISION.
+Additionally, we map the hash code into an array that may be much smaller than the millions of hash code combinations. Thus different hash codes can result into the same array index. This is called a **hash collision**.
 
 One possible solution for a hash collision could be to CHAIN the values at the same index position into a linked list. Example:
 

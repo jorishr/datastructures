@@ -30,7 +30,7 @@ const edgeArr = [
 
 Since we have an undirected graph the order of the first/second vertex is irrelevant. When working with a directed graph, use startVertex and endVertex.
 
-To add weigth to edges, simply add a new key-value pair to the object.
+To add weight to edges, simply add a new key-value pair to the object.
 ```
 ## Cost of storage and operations
 The approach above is not very efficient.
@@ -39,7 +39,7 @@ The vertex array stores n values. Those values are strings that can be of any le
 
 On average, however, we can assume that the string length will within a reasonable range, approaching a constant on average. The space complexity therefore would be O(|V|) or O(n) with n = |V|.
 
-A similar situation arises with edge list. To get O([E]) however we should not store the name each vertex but the index postion in the vertex list. By doing so all edge list objects will carry integer values with the same memory space requirements.
+A similar situation arises with edge list. To get O([E]) however we should not store the name each vertex but the index position in the vertex list. By doing so all edge list objects will carry integer values with the same memory space requirements.
 ```
 const edgeArr = [
  {"firstVertex": 0, "secondVertex": 1, "weight": 1}

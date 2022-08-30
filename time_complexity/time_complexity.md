@@ -35,7 +35,7 @@ Total time =
     + (n + 1) * w + (n + 1) * c 
     + n * w + n * s
     + r
-If we assume that writing to a variable (w), comparing variables (c), calculating a sum (s) and returning a variable (r) take exactely one unit of time than we can simplify the time calculation:
+If we assume that writing to a variable (w), comparing variables (c), calculating a sum (s) and returning a variable (r) take exactly one unit of time than we can simplify the time calculation:
 ```
 w = r = c = s = 1 
 time(t) =   1 
@@ -48,4 +48,4 @@ time(t) =   1
 ```
 In the example n = 3, thus the program sumOfList will take 16 units of processing time to complete. If n = 6, t = 28; if n = 12, t = 52. This is a linear growth rate.
 
-All linear growth functions can grouped into a set called Big O of n: O(n). See asymptothic notation in [big_o_notation](big_o_notation.md);
+All linear growth functions can grouped into a set called Big O of n: O(n). See asymptotic notation in [big_o_notation](big_o_notation.md);

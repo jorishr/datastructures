@@ -1,4 +1,4 @@
-# Guide to solving algoritm problems
+# Guide to solving algorithm problems
 
 ## Step 1
 - read the problem three times or to understand all aspects of the problem

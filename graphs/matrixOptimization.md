@@ -1,8 +1,17 @@
-# Matrix optimization
+# Matrix optimization 
+
+[Matrix optimization](#matrix-optimization)
+  - [Matrix memory problem](#matrix-memory-problem)
+  - [Storing edges](#storing-edges)
+  - [Comparing time complexity](#comparing-time-complexity)
+  - [Further optimizations: linked-list and BST](#further-optimizations-linked-list-and-bst)
+    - [Adjacency list](#adjacency-list)
+    - [BST](#bst)
+
 ## Matrix memory problem
 The problem with an adjacency matrix is inefficient use of memory, especially for sparse graphs which are the majority of the graphs we work with.
 
-What could be improved upon is the fact that the matrix not only stores the information about the existing edges between vertices but also explicitely stores the absense of a connection in the form of the value 0, Infinity or other.
+What could be improved upon is the fact that the matrix not only stores the information about the existing edges between vertices but also explicitly stores the absence of a connection in the form of the value 0, Infinity or other.
 
 See the social network example in the [adjacencyMatrix.md](adjacencyMatrix.md). If each user has on average 10^3 connection but the total number of possible connections is approximately 10^18 then each row in the matrix will contain 10^3 1's and up to 10^9 - 10^3 0's. This is very inefficient use of memory space. Even if our values are stored as booleans of 1 bytes, the 1's will amount to roughly 1 kb while storing non-existing connection will require close to 1 gigabyte of memory.
 
@@ -57,7 +66,7 @@ If the array of edges for each row is kept IN ORDER a binary search can be perfo
 ### Adjacency list
 If a linked-list is used insertion has a O(1) at best at the head, O(n) for insertion at the tail end of the list. But in general, insertion and deletion is more efficient in an linked-list than in an array.
 
-Another advantage of a linked-list implementation would be that it is easy to add an addtional field to each node in the list to store the WEIGTH of an edge. Something that cannot be done in the optimized version of the matrix above.
+Another advantage of a linked-list implementation would be that it is easy to add an additional field to each node in the list to store the *weight* of an edge. Something that cannot be done in the optimized version of the matrix above.
 
 To implement an adjacency matrix based linked-list or ADJACENCY LIST each value in the vertex array needs to store a pointer to the first cell of the corresponding matrix row, that is the head of the linked-list.
 
